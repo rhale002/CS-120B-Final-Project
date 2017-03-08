@@ -53,7 +53,7 @@ int main(void)
 	tasks[taskIndex].TickFct = &U_Tick;
 	++taskIndex;
 	//Initialize Movement task
-	tasks[taskIndex].state = M_Base;
+	tasks[taskIndex].state = M_Start;
 	tasks[taskIndex].period = M_Period;
 	tasks[taskIndex].elapsedTime = M_Period;
 	tasks[taskIndex].TickFct = &M_Tick;
