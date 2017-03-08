@@ -1,7 +1,10 @@
 #ifndef JOYSTICK_H
 #define JOYSTICK_H
 
-//http://www.embedds.com/interfacing-analog-joystick-with-avr/
+/*
+	Source:
+		http://www.embedds.com/interfacing-analog-joystick-with-avr/
+*/
 
 void InitADC(void)
 {
