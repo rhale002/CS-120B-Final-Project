@@ -16,7 +16,6 @@
 
 //Task Scheduler Variables
 unsigned long numTasks = 2;
-unsigned long taskIndex = 0;
 
 int main(void)
 {
@@ -37,6 +36,8 @@ int main(void)
 	//Initialize task scheduler
 	task tasks[numTasks];
 	
+	//Initialize all tasks for scheduler
+	unsigned long taskIndex = 0;
 	//Initialize joystick task
 	tasks[taskIndex].state = J_Base;
 	tasks[taskIndex].period = J_Period;
@@ -63,7 +64,6 @@ int main(void)
 				tasks[i].elapsedTime = 0;
 			}
 		}
-		//Wait for timerFlag to go high again then reset timerFlag
 		while (!TimerFlag);
 		TimerFlag = 0;
     }
