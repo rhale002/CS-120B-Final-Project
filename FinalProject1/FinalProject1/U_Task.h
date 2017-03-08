@@ -10,19 +10,19 @@ unsigned long U_Period = 1;
 extern unsigned char test;
 */
 
-//Initialize J_Task Tick Function
+//Initialize U_Task Tick Function
 int U_Tick(int currentState)
 {
 	static int USART_Index;
 	
 	switch(currentState)
 	{
-		case U_Init:
+		case U_Start:
 		{
-			currentState = U_Start;
+			currentState = U_Init;
 		}
 		break;
-		case U_Start:
+		case U_Init:
 		{
 			currentState = U_Base;
 		}
@@ -39,9 +39,9 @@ int U_Tick(int currentState)
 
 	switch(currentState)
 	{
-		case U_Init:
-		break;
 		case U_Start:
+		break;
+		case U_Init:
 		{
 			USART_Index = 0;
 		}

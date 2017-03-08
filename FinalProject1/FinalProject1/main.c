@@ -11,11 +11,13 @@
 #include "scheduler.h"
 #include "timer.h"
 #include "usart_ATmega1284.h"
+#include "structs.h"
 #include "J_Task.h"
 #include "U_Task.h"
+#include "M_Task.h"
 
 //Task Scheduler Variables
-unsigned long numTasks = 2;
+unsigned long numTasks = 3;
 
 int main(void)
 {
@@ -45,10 +47,16 @@ int main(void)
 	tasks[taskIndex].TickFct = &J_Tick;
 	++taskIndex;
 	//Initialize USART task
-	tasks[taskIndex].state = U_Base;
+	tasks[taskIndex].state = U_Start;
 	tasks[taskIndex].period = U_Period;
 	tasks[taskIndex].elapsedTime = U_Period;
 	tasks[taskIndex].TickFct = &U_Tick;
+	++taskIndex;
+	//Initialize Movement task
+	tasks[taskIndex].state = M_Base;
+	tasks[taskIndex].period = M_Period;
+	tasks[taskIndex].elapsedTime = M_Period;
+	tasks[taskIndex].TickFct = &M_Tick;
 	++taskIndex;
 	
     while (1) 
