@@ -21,15 +21,14 @@ unsigned long numTasks = 3;
 
 int main(void)
 {
-	DDRA = 0x00; PORTC = 0xFF;	//Joystick input
-	DDRC = 0xFF; PORTC = 0x00;	//LED Testing Output
+	DDRA = 0x00; PORTC = 0xFF;	//Setup Port A for Joystick input
+	DDRD = 0x02; PORTD = 0x01;	//Setup Port D for USART
 	
 	//Initialize joystick reading
 	InitADC();
 	
 	//Initialize UART
 	initUSART(0);
-	USART_Flush(0);
 	
 	//Initialize timer
 	TimerSet(1);

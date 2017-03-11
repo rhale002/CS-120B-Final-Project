@@ -44,27 +44,22 @@ int J_Tick(int currentState)
 			if(abs(yJoy) >= abs(xJoy) && yJoy > 75)			//If up
 			{
 				J_Direction = 0x01;
-				PORTC = 0x01;
 			}
 			else if(abs(xJoy) > abs(yJoy) && xJoy > 75)		//If right
 			{
 				J_Direction = 0x02;
-				PORTC = 0x02;
 			}
 			else if(abs(yJoy) >= abs(xJoy) && yJoy < -75)	// If down
 			{
 				J_Direction = 0x03;
-				PORTC = 0x04;
 			}
 			else if(abs(xJoy) > abs(yJoy) && xJoy < -75)	//If left
 			{
 				J_Direction = 0x04;
-				PORTC = 0x08;
 			}
 			else 											//If no input
 			{
 				J_Direction = 0x00;
-				PORTC = 0x00;
 			}
 		}
 		break;
