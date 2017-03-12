@@ -2,7 +2,7 @@
 #define M_TASK_H
 //Initialize Joystick Task states and period
 enum M_States {M_Start, M_Init, M_Base} M_State;
-unsigned long M_Period = 50;
+unsigned long M_Period = 100;
 
 //Output from Joystick (Which direction is being input)
 //NO INPUT: J_Direction == 0x00
@@ -44,15 +44,15 @@ int M_Tick(int currentState)
 		break;
 		case M_Init:
 		{
-			player.xPosition = 30;
-			player.yPosition = 7;
+			player.xPosition = 31;
+			player.yPosition = 0;
 		}
 		break;
 		case M_Base:
 		{
 			if(J_Direction == 0x01)			//If UP
 			{
-				if(player.yPosition < 14)
+				if(player.yPosition < 31)
 					++player.yPosition;
 			}
 			else if(J_Direction == 0x02)	//If RIGHT (Flipped)
@@ -68,7 +68,7 @@ int M_Tick(int currentState)
 			}
 			else if(J_Direction == 0x04)	//If LEFT (Flipped)
 			{
-				if(player.xPosition < 30)
+				if(player.xPosition < 31)
 					++player.xPosition;
 			}
 		}

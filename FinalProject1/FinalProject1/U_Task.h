@@ -59,7 +59,9 @@ int U_Tick(int currentState)
 			{
 				USART_Send(player.yPosition, 0);
 				++USART_Index;
+				USART_Index = 0;
 			}
+			/*
 			else if(USART_IsSendReady(0) && USART_Index == 2)		//Send byte over USART for obstacle 0 x-position
 			{
 				USART_Send(obstacles[obstacleIndex].xPosition, 0);
@@ -148,6 +150,7 @@ int U_Tick(int currentState)
 				USART_Index = 0;
 				obstacleIndex = 0;
 			}
+			*/
 		}
 		break;
 		
