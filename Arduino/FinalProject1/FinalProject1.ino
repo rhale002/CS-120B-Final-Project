@@ -25,6 +25,8 @@ typedef struct _Player
 } Player;
 Player player;
 
+unsigned char recieveEndGameBad = 0x00;
+
 void recieveUSART()
 {
   if (USART_Index == 0)         //Player xPosition
@@ -37,7 +39,12 @@ void recieveUSART()
   {
     player.yPosition = Serial.read();
     
-    //++USART_Index;
+    ++USART_Index;
+  }
+  else if(USART_Index == 2)     //Endgame testing
+  {
+    recieveEndGameBad = Serial.read();
+    
     USART_Index = 0;
   }
 }
@@ -143,6 +150,8 @@ void setup()
   
   player.xPosition = 31;
   player.yPosition = 0;
+  
+  recieveEndGameBad = 0x00;
 
   drawBoundaries();
 }
@@ -151,8 +160,18 @@ void loop()
 { 
   if(Serial.available() > 0)
     recieveUSART();
-  
-  drawPlayer();
+
+  if(recieveEndGameBad == 0x00)
+  {
+    drawPlayer();
+  }
+  else if(recieveEndGameBad == 0x01)
+  {
+    matrix.fillScreen(matrix.Color333(1, 1, 1));
+    recieveEndGameBad == 0xFF;
+  }
+  else if(recieveEndGameBad == 0xFF)
+  {}
   
   matrix.swapBuffers(false);
 }

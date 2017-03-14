@@ -7,13 +7,8 @@ typedef struct _Player
 	unsigned char yPosition;
 } Player;
 
-typedef struct _Obstacle
-{
-	unsigned char xPosition;
-	unsigned char yPosition;
-} Obstacle;
-
 Player player;
-Obstacle obstacles[8];
+
+unsigned char board[32][32]  = {{0}};
 
 #endif

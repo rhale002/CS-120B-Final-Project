@@ -15,9 +15,10 @@
 #include "J_Task.h"
 #include "U_Task.h"
 #include "M_Task.h"
+#include "B_Task.h"
 
 //Task Scheduler Variables
-unsigned long numTasks = 3;
+unsigned long numTasks = 4;
 
 int main(void)
 {
@@ -56,6 +57,12 @@ int main(void)
 	tasks[taskIndex].period = M_Period;
 	tasks[taskIndex].elapsedTime = M_Period;
 	tasks[taskIndex].TickFct = &M_Tick;
+	++taskIndex;
+	//Initialize Board task
+	tasks[taskIndex].state = B_Start;
+	tasks[taskIndex].period = B_Period;
+	tasks[taskIndex].elapsedTime = B_Period;
+	tasks[taskIndex].TickFct = &B_Tick;
 	++taskIndex;
 	
     while (1) 
