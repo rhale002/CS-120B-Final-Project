@@ -41,7 +41,7 @@ int main(void)
 	//Initialize all tasks for scheduler
 	unsigned long taskIndex = 0;
 	//Initialize joystick task
-	tasks[taskIndex].state = J_Base;
+	tasks[taskIndex].state = J_Start;
 	tasks[taskIndex].period = J_Period;
 	tasks[taskIndex].elapsedTime = J_Period;
 	tasks[taskIndex].TickFct = &J_Tick;

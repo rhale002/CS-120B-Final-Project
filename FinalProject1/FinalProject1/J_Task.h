@@ -1,7 +1,7 @@
 #ifndef J_TASK_H
 #define J_TASK_H
 //Initialize Joystick Task states and period
-enum J_States {J_Base} J_State;
+enum J_States {J_Start, J_Init, J_Base} J_State;
 unsigned long J_Period = 1;
 
 //Keeps track of output of joystick (which direction is being input)
@@ -10,7 +10,7 @@ unsigned long J_Period = 1;
 //RIGHT:	J_Output == 0x02
 //DOWN:		J_Output == 0x03
 //LEFT:		J_Output == 0x04
-unsigned char J_Direction = 0x00;
+extern unsigned char J_Direction;
 
 //Initialize J_Task Tick Function
 int J_Tick(int currentState)
@@ -21,6 +21,18 @@ int J_Tick(int currentState)
 	
 	switch(currentState)
 	{
+		case J_Start:
+		{
+			currentState = J_Init;
+		}
+		break;
+		
+		case J_Init:
+		{
+			currentState = J_Base;
+		}
+		break;
+		
 		case J_Base:
 		{
 			currentState = J_Base;
@@ -33,6 +45,15 @@ int J_Tick(int currentState)
 
 	switch(currentState)
 	{
+		case J_Start:
+		break;
+		
+		case J_Init:
+		{
+			J_Direction = 0x00;
+		}
+		break;
+		
 		case J_Base:
 		{
 			xJoy = readadc(0);      //Read ADC value from A0 (Joystick x axis)

@@ -12,7 +12,14 @@ unsigned long M_Period = 100;
 //LEFT:		J_Direction == 0x04
 extern unsigned char J_Direction;
 
+//Variable for tracking player position
 extern Player player;
+
+//Variable to keep track if we should end the game for a loss
+extern unsigned char sendEndGameBad;
+
+//Variable to keep track if we should end the game for a win
+extern unsigned char sendEndGameGood;
 
 //Initialize M_Task Tick Function
 int M_Tick(int currentState)
@@ -24,16 +31,19 @@ int M_Tick(int currentState)
 			currentState = M_Init;
 		}
 		break;
+		
 		case M_Init:
 		{
 			currentState = M_Base;
 		}
 		break;
+		
 		case M_Base:
 		{
 			currentState = M_Base;
 		}
 		break;
+		
 		default:
 		break;
 	}//transitions
@@ -42,37 +52,43 @@ int M_Tick(int currentState)
 	{		
 		case M_Start:
 		break;
+		
 		case M_Init:
 		{
 			player.xPosition = 31;
 			player.yPosition = 0;
 		}
 		break;
+		
 		case M_Base:
 		{
-			if(J_Direction == 0x01)			//If UP
+			if(sendEndGameBad == 0x00 && sendEndGameGood == 0x00)
 			{
-				if(player.yPosition < 31)
+				if(J_Direction == 0x01)			//If UP
+				{
+					if(player.yPosition < 31)
 					++player.yPosition;
-			}
-			else if(J_Direction == 0x02)	//If RIGHT (Flipped)
-			{
-				if(player.xPosition > 0)
+				}
+				else if(J_Direction == 0x02)	//If RIGHT (Flipped)
+				{
+					if(player.xPosition > 0)
 					--player.xPosition;
-				
-			}
-			else if(J_Direction == 0x03)	//If DOWN
-			{
-				if(player.yPosition > 0)
+					
+				}
+				else if(J_Direction == 0x03)	//If DOWN
+				{
+					if(player.yPosition > 0)
 					--player.yPosition;
-			}
-			else if(J_Direction == 0x04)	//If LEFT (Flipped)
-			{
-				if(player.xPosition < 31)
+				}
+				else if(J_Direction == 0x04)	//If LEFT (Flipped)
+				{
+					if(player.xPosition < 31)
 					++player.xPosition;
+				}
 			}
 		}
 		break;
+		
 		default:
 		break;
 	}//actions
