@@ -26,25 +26,34 @@ typedef struct _Player
 Player player;
 
 unsigned char recieveEndGameBad = 0x00;
+unsigned char recieveEndGameGood = 0x00;
+unsigned char recieveResetGame = 0x00;
 
 void recieveUSART()
 {
   if (USART_Index == 0)         //Player xPosition
   {
     player.xPosition = Serial.read();
-    
     ++USART_Index;
   }
   else if (USART_Index == 1)    //Player yPosition
   {
     player.yPosition = Serial.read();
-    
     ++USART_Index;
   }
   else if(USART_Index == 2)     //Endgame testing
   {
     recieveEndGameBad = Serial.read();
-    
+    ++USART_Index;
+  }
+  else if(USART_Index == 3)     //Endgame testing
+  {
+    recieveEndGameGood = Serial.read();
+    ++USART_Index;
+  }
+  else if(USART_Index == 4)     //Endgame testing
+  {
+    recieveResetGame = Serial.read();
     USART_Index = 0;
   }
 }
@@ -140,37 +149,55 @@ void drawBoundaries()
    matrix.drawLine(26, 30, 30, 30, matrix.Color333(7, 0, 0));
 }
 
-void setup() 
+void reset()
 {
-  matrix.begin();
-
-  Serial.begin(9600);
- 
+  Serial.flush();
+  
   USART_Index = 0;
   
   player.xPosition = 31;
   player.yPosition = 0;
   
   recieveEndGameBad = 0x00;
+  recieveEndGameGood = 0x00;
+  recieveResetGame = 0x00;
 
+  matrix.fillScreen(0);
+  
   drawBoundaries();
+}
+
+void setup() 
+{
+  matrix.begin();
+
+  Serial.begin(9600);
+
+  reset();
 }
 
 void loop() 
 { 
   if(Serial.available() > 0)
     recieveUSART();
-
-  if(recieveEndGameBad == 0x00)
+    
+  if(recieveResetGame == 0x01)
+  {
+    reset();
+  }
+  else if(recieveEndGameBad == 0x00 && recieveEndGameGood == 0x00)
   {
     drawPlayer();
   }
   else if(recieveEndGameBad == 0x01)
   {
-    matrix.fillScreen(matrix.Color333(1, 1, 1));
     recieveEndGameBad == 0xFF;
   }
-  else if(recieveEndGameBad == 0xFF)
+  else if(recieveEndGameGood == 0x01)
+  {
+    recieveEndGameGood == 0xFF;
+  }
+  else if(recieveEndGameBad == 0xFF || recieveEndGameGood == 0xFF)
   {}
   
   matrix.swapBuffers(false);

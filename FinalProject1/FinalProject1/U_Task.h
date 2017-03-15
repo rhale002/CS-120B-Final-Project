@@ -14,6 +14,8 @@ extern unsigned char sendEndGameBad;
 //Variable to keep track if we should end the game for a win
 extern unsigned char sendEndGameGood;
 
+extern unsigned char resetGame;
+
 //Initialize U_Task Tick Function
 int U_Tick(int currentState)
 {
@@ -75,6 +77,13 @@ int U_Tick(int currentState)
 			else if(USART_Index == 3 && USART_IsSendReady(0))		//If game should be ended with a win
 			{
 				USART_Send(sendEndGameGood, 0);
+				++USART_Index;
+			}
+			else if(USART_Index == 4 && USART_IsSendReady(0))		//If game should be ended with a win
+			{
+				USART_Send(sendResetGame, 0);
+				if(sendResetGame == 0x01)
+					resetGame = 0x01;
 				USART_Index = 0;
 			}
 		}

@@ -7,6 +7,7 @@
 
 #include <avr/io.h>
 #include <stdlib.h>
+#include "io.h"
 #include "joystick.h"
 #include "scheduler.h"
 #include "timer.h"
@@ -16,28 +17,16 @@
 #include "U_Task.h"
 #include "M_Task.h"
 #include "B_Task.h"
+#include "R_Task.h"
+#include "S_Task.h"
 
 //Task Scheduler Variables
-unsigned long numTasks = 4;
+unsigned long numTasks = 6;
 
-int main(void)
+extern unsigned char resetGame;
+
+void resetTasks(task *tasks)
 {
-	DDRA = 0x00; PORTC = 0xFF;	//Setup Port A for Joystick input
-	DDRD = 0x02; PORTD = 0x01;	//Setup Port D for USART
-	
-	//Initialize joystick reading
-	InitADC();
-	
-	//Initialize UART
-	initUSART(0);
-	
-	//Initialize timer
-	TimerSet(1);
-	TimerOn();
-	
-	//Initialize task scheduler
-	task tasks[numTasks];
-	
 	//Initialize all tasks for scheduler
 	unsigned long taskIndex = 0;
 	//Initialize joystick task
@@ -64,9 +53,49 @@ int main(void)
 	tasks[taskIndex].elapsedTime = B_Period;
 	tasks[taskIndex].TickFct = &B_Tick;
 	++taskIndex;
+	//Initialize Reset task
+	tasks[taskIndex].state = R_Start;
+	tasks[taskIndex].period = R_Period;
+	tasks[taskIndex].elapsedTime = R_Period;
+	tasks[taskIndex].TickFct = &R_Tick;
+	++taskIndex;
+	//Initialize Reset task
+	tasks[taskIndex].state = S_Start;
+	tasks[taskIndex].period = S_Period;
+	tasks[taskIndex].elapsedTime = S_Period;
+	tasks[taskIndex].TickFct = &S_Tick;
+	++taskIndex;
+}
+
+int main(void)
+{
+	DDRA = 0x00; PORTC = 0xFF;	//Setup Port A for Joystick input
+	DDRD = 0x02; PORTD = 0x41;	//Setup Port D for USART
+	DDRC = 0xFF; PORTC = 0x00; // LCD data lines
+	DDRB = 0xFF; PORTB = 0x00; // LCD control lines
+	
+	//Initialize lcd screen
+	LCD_init();
+	
+	//Initialize joystick reading
+	InitADC();
+	
+	//Initialize UART
+	initUSART(0);
+	
+	//Initialize timer
+	TimerSet(1);
+	TimerOn();
+	
+	//Initialize task scheduler
+	task tasks[numTasks];
+
+	resetTasks(tasks);
 	
     while (1) 
     {
+		if(resetGame == 0x01)
+			resetTasks(tasks);
 		//Handle tasks
 		for(unsigned long i = 0; i < numTasks; i++)
 		{

@@ -57,33 +57,49 @@ int M_Tick(int currentState)
 		{
 			player.xPosition = 31;
 			player.yPosition = 0;
+			player.prevXPosition = player.xPosition;
+			player.prevYPosition = player.yPosition;
+			isInNewPosition = 0;
 		}
 		break;
 		
 		case M_Base:
 		{
-			if(sendEndGameBad == 0x00 && sendEndGameGood == 0x00)
+			if(J_Direction == 0x01)			//If UP
 			{
-				if(J_Direction == 0x01)			//If UP
+				if(player.yPosition < 31)
 				{
-					if(player.yPosition < 31)
+					player.prevYPosition = player.yPosition;
 					++player.yPosition;
+					isInNewPosition = 0x01;
 				}
-				else if(J_Direction == 0x02)	//If RIGHT (Flipped)
+			}
+			else if(J_Direction == 0x02)	//If RIGHT (Flipped)
+			{
+				if(player.xPosition > 0)
 				{
-					if(player.xPosition > 0)
+					player.prevXPosition = player.xPosition;
 					--player.xPosition;
+					isInNewPosition = 0x01;
+				}
 					
-				}
-				else if(J_Direction == 0x03)	//If DOWN
+			}
+			else if(J_Direction == 0x03)	//If DOWN
+			{
+				if(player.yPosition > 0)
 				{
-					if(player.yPosition > 0)
+					player.prevYPosition = player.yPosition;
 					--player.yPosition;
+					isInNewPosition = 0x01;
 				}
-				else if(J_Direction == 0x04)	//If LEFT (Flipped)
+			}
+			else if(J_Direction == 0x04)	//If LEFT (Flipped)
+			{
+				if(player.xPosition < 31)
 				{
-					if(player.xPosition < 31)
+					player.prevXPosition = player.xPosition;
 					++player.xPosition;
+					isInNewPosition = 0x01;
 				}
 			}
 		}
