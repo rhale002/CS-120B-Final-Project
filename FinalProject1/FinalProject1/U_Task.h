@@ -8,12 +8,12 @@ unsigned long U_Period = 1;
 //Variable to track player position
 extern Player player;
 
-//Random board variables
-extern unsigned char group;
-extern unsigned char bottomLeftCorner;
-extern unsigned char bottomRightCorner;
-extern unsigned char topRightCorner;
-extern unsigned char topLeftCorner;
+//Maps Info previous
+extern unsigned char nGroup;
+extern unsigned char nBottomLeftCorner;
+extern unsigned char nBottomRightCorner;
+extern unsigned char nTopRightCorner;
+extern unsigned char nTopLeftCorner;
 
 //Variable to keep track if we should end the game for a loss
 extern unsigned char sendEndGameBad;
@@ -78,27 +78,27 @@ int U_Tick(int currentState)
 		{
 			if(USART_Index == 0 && USART_IsSendReady(0))			
 			{
-				USART_Send(group, 0);
+				USART_Send(nGroup, 0);
 				++USART_Index;
 			}
 			else if(USART_Index == 1 && USART_IsSendReady(0))		
 			{
-				USART_Send(bottomLeftCorner, 0);
+				USART_Send(nBottomLeftCorner, 0);
 				++USART_Index;
 			}
 			else if(USART_Index == 2 && USART_IsSendReady(0))		
 			{
-				USART_Send(bottomRightCorner, 0);
+				USART_Send(nBottomRightCorner, 0);
 				++USART_Index;
 			}
 			else if(USART_Index == 3 && USART_IsSendReady(0))		
 			{
-				USART_Send(topLeftCorner, 0);
+				USART_Send(nTopLeftCorner, 0);
 				++USART_Index;
 			}
 			else if(USART_Index == 4 && USART_IsSendReady(0))
 			{
-				USART_Send(topRightCorner, 0);
+				USART_Send(nTopRightCorner, 0);
 				++USART_Index;
 			}
 			else if(USART_Index == 5 && USART_IsSendReady(0))			//Send byte over USART for player x-position

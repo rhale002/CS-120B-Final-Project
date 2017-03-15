@@ -79,21 +79,6 @@ void resetTasks(task *tasks)
 	++taskIndex;
 }
 
-void setBoardToDrawRandom()
-{	
-	group = group == 1 ? 2 : 1;
-
-	bottomLeftCorner = group == 1 ? rand() % 4 : (rand() % 4) + 4;
-	bottomRightCorner = group == 1 ? rand() % 4 : (rand() % 4) + 4;
-	topLeftCorner = group == 1 ? rand() % 4 : (rand() % 4) + 4;
-	topRightCorner = group == 1 ? rand() % 4 : (rand() % 4) + 4;
-}
-
-void setBoardToDrawWinDemo()
-{
-	group = 0;
-}
-
 int main(void)
 {
 	DDRA = 0x00; PORTC = 0xFF;	//Setup Port A for Joystick input
@@ -120,21 +105,22 @@ int main(void)
 	//Seed RNG
 	srand(time(NULL)); 
 
-	//Set tasks and choose random board to draw
-	resetTasks(tasks);
+	//Set tasks and prep win board
 	setBoardToDrawWinDemo();
+	setBoardToDrawWinDemo();
+	resetTasks(tasks);
 	
     while (1) 
     {
 		if(resetGame == 0x01)
 		{
-			resetTasks(tasks);
 			setBoardToDrawRandom();
+			resetTasks(tasks);
 		}
 		else if(resetGameWinDemo == 0x01)
 		{
-			resetTasks(tasks);
 			setBoardToDrawWinDemo();
+			resetTasks(tasks);
 		}
 
 		//Handle tasks
