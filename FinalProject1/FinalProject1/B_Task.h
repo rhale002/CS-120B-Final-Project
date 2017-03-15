@@ -185,11 +185,12 @@ int B_Tick(int currentState)
 		{
 			if(board[player.xPosition][player.yPosition] == 0x01)
 				sendEndGameBad = 0x01;
-			else if(isInNewPosition == 0x01)
+			else if(player.prevXPosition != player.xPosition || player.prevYPosition != player.yPosition)
 			{
 				board[player.prevXPosition][player.prevYPosition] = 0x01;
+				player.prevXPosition = player.xPosition;
+				player.prevYPosition = player.yPosition;
 				incrementScore = 0x01;
-				isInNewPosition = 0x00;
 			}
 		}
 		break;

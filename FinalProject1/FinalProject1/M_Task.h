@@ -59,7 +59,6 @@ int M_Tick(int currentState)
 			player.yPosition = 0;
 			player.prevXPosition = player.xPosition;
 			player.prevYPosition = player.yPosition;
-			isInNewPosition = 0;
 		}
 		break;
 		
@@ -71,7 +70,6 @@ int M_Tick(int currentState)
 				{
 					player.prevYPosition = player.yPosition;
 					++player.yPosition;
-					isInNewPosition = 0x01;
 				}
 			}
 			else if(J_Direction == 0x02)	//If RIGHT (Flipped)
@@ -80,7 +78,6 @@ int M_Tick(int currentState)
 				{
 					player.prevXPosition = player.xPosition;
 					--player.xPosition;
-					isInNewPosition = 0x01;
 				}
 					
 			}
@@ -90,7 +87,6 @@ int M_Tick(int currentState)
 				{
 					player.prevYPosition = player.yPosition;
 					--player.yPosition;
-					isInNewPosition = 0x01;
 				}
 			}
 			else if(J_Direction == 0x04)	//If LEFT (Flipped)
@@ -99,7 +95,6 @@ int M_Tick(int currentState)
 				{
 					player.prevXPosition = player.xPosition;
 					++player.xPosition;
-					isInNewPosition = 0x01;
 				}
 			}
 		}

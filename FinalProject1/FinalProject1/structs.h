@@ -11,9 +11,6 @@ typedef struct _Player
 } Player;
 Player player;
 
-//Tracks whether movement was to a new location
-unsigned char isInNewPosition;
-
 //Board which tracks where you've been/ have not yet been/cannot go to
 unsigned char board[32][32]  = {{0}};
 	
