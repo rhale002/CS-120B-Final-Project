@@ -2,7 +2,7 @@
 #define S_TASK_H
 
 //Initialize Score task states and period
-enum S_States {S_Start, S_Init, S_Base, S_outputLose, S_outputLoseWait} S_State;
+enum S_States {S_Start, S_Init, S_Base, S_outputLose, S_outputWin, S_outputWait} S_State;
 unsigned long S_Period = 1;
 
 //Tracks score
@@ -57,7 +57,9 @@ int S_Tick(int currentState)
 
 		case S_Base:
 		{
-			if(sendEndGameBad == 0x01 && stopOutput != 0x01)
+			if(sendEndGameGood == 0x01 && stopOutput != 0x01)
+				currentState = S_outputWin;
+			else if(sendEndGameBad == 0x01 && stopOutput != 0x01)
 				currentState = S_outputLose;
 			else
 				currentState = S_Base;
@@ -66,13 +68,19 @@ int S_Tick(int currentState)
 
 		case S_outputLose:
 		{
-			currentState = S_outputLoseWait;
+			currentState = S_outputWait;
 		}
 		break;
 
-		case S_outputLoseWait:
+		case S_outputWin:
 		{
-			if(waitCount >= 1500)
+			currentState = S_outputWait;
+		}
+		break;
+
+		case S_outputWait:
+		{
+			if(waitCount >= 2000)
 			{
 				waitCount = 0;
 				stopOutput = 0x01;
@@ -80,7 +88,7 @@ int S_Tick(int currentState)
 				currentState = S_Base;
 			}
 			else
-				currentState = S_outputLoseWait;
+				currentState = S_outputWait;
 		}
 		break;
 
@@ -104,7 +112,7 @@ int S_Tick(int currentState)
 		break;
 
 		case S_Base:
-		if(sendEndGameBad == 0x01 || stopOutput == 0x01)
+		if(sendEndGameBad == 0x01 || sendEndGameGood == 0x01 ||stopOutput == 0x01)
 		{}
 		else if(incrementScore == 0x01)
 		{
@@ -120,7 +128,13 @@ int S_Tick(int currentState)
 		}
 		break;
 
-		case S_outputLoseWait:
+		case S_outputWin:
+		{
+			LCD_DisplayString(1, "You Win");
+		}
+		break;
+
+		case S_outputWait:
 		{
 			waitCount++;
 		}

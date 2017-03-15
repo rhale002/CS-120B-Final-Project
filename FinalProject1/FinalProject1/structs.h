@@ -40,4 +40,7 @@ unsigned short score;
 //Tracks whether to incrementScore
 unsigned char incrementScore;
 
+//Track how many spaces need to be filled
+unsigned short requiredSpaces;
+
 #endif

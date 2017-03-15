@@ -8,6 +8,9 @@ unsigned long B_Period = 1;
 //Create extern variable for board array
 extern unsigned char board[32][32];
 
+//Track how many spaces need to be filled
+extern unsigned short requiredSpaces;
+
 //Create extern variable for tracking player position
 extern Player player;
 
@@ -39,6 +42,7 @@ void drawLine(unsigned char x1, unsigned char y1, unsigned char x2, unsigned cha
 		for(unsigned char j = y1; j <= y2; j++)
 		{
 			board[i][j] = 0x01;
+			requiredSpaces--;
 		}
 	}
 }
@@ -52,6 +56,42 @@ void clearBoard()
 			board[i][j] = 0x00;
 		}
 	}
+}
+
+void fillboardWinTest()
+{
+	drawLine(31, 5, 31, 31);
+	drawLine(30, 0, 30, 31);
+	drawLine(29, 0, 29, 31);
+	drawLine(28, 0, 28, 31);
+	drawLine(27, 0, 27, 31);
+	drawLine(26, 0, 26, 31);
+	drawLine(25, 0, 25, 31);
+	drawLine(24, 0, 24, 31);
+	drawLine(23, 0, 23, 31);
+	drawLine(22, 0, 22, 31);
+	drawLine(21, 0, 21, 31);
+	drawLine(20, 0, 20, 31);
+	drawLine(19, 0, 19, 31);
+	drawLine(18, 0, 18, 31);
+	drawLine(17, 0, 17, 31);
+	drawLine(16, 0, 16, 31);
+	drawLine(15, 0, 15, 31);
+	drawLine(14, 0, 14, 31);
+	drawLine(13, 0, 13, 31);
+	drawLine(12, 0, 12, 31);
+	drawLine(11, 0, 11, 31);
+	drawLine(10, 0, 10, 31);
+	drawLine(9, 0, 9, 31);
+	drawLine(8, 0, 8, 31);
+	drawLine(7, 0, 7, 31);
+	drawLine(6, 0, 6, 31);
+	drawLine(5, 0, 5, 31);
+	drawLine(4, 0, 4, 31);
+	drawLine(3, 0, 3, 31);
+	drawLine(2, 0, 2, 31);
+	drawLine(1, 0, 1, 31);
+	drawLine(0, 0, 0, 31);
 }
 
 void fillBoardBasic()
@@ -174,22 +214,32 @@ int B_Tick(int currentState)
 
 		case B_Init:
 		{
+			requiredSpaces = 1024;
 			sendEndGameBad = 0x00;
 			sendEndGameGood = 0x00;
 			clearBoard();
 			fillBoardBasic();
+			//fillboardWinTest();
+			requiredSpaces--;
 		}
 		break;
 
 		case B_Base:
 		{
-			if(board[player.xPosition][player.yPosition] == 0x01)
+			if(requiredSpaces <= 0)
+			{
+				sendEndGameGood = 0x01;
+			}
+			else if(board[player.xPosition][player.yPosition] == 0x01)
+			{
 				sendEndGameBad = 0x01;
+			}
 			else if(player.prevXPosition != player.xPosition || player.prevYPosition != player.yPosition)
 			{
 				board[player.prevXPosition][player.prevYPosition] = 0x01;
 				player.prevXPosition = player.xPosition;
 				player.prevYPosition = player.yPosition;
+				requiredSpaces--;
 				incrementScore = 0x01;
 			}
 		}

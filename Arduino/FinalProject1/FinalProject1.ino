@@ -65,6 +65,41 @@ void drawPlayer()
 
 void drawBoundaries()
 {
+  /*
+  matrix.drawLine(31, 5, 31, 31, matrix.Color333(7, 0, 0));
+  matrix.drawLine(30, 0, 30, 31, matrix.Color333(7, 0, 0));
+  matrix.drawLine(29, 0, 29, 31, matrix.Color333(7, 0, 0));
+  matrix.drawLine(28, 0, 28, 31, matrix.Color333(7, 0, 0));
+  matrix.drawLine(27, 0, 27, 31, matrix.Color333(7, 0, 0));
+  matrix.drawLine(26, 0, 26, 31, matrix.Color333(7, 0, 0));
+  matrix.drawLine(25, 0, 25, 31, matrix.Color333(7, 0, 0));
+  matrix.drawLine(24, 0, 24, 31, matrix.Color333(7, 0, 0));
+  matrix.drawLine(23, 0, 23, 31, matrix.Color333(7, 0, 0));
+  matrix.drawLine(22, 0, 22, 31, matrix.Color333(7, 0, 0));
+  matrix.drawLine(21, 0, 21, 31, matrix.Color333(7, 0, 0));
+  matrix.drawLine(20, 0, 20, 31, matrix.Color333(7, 0, 0));
+  matrix.drawLine(19, 0, 19, 31, matrix.Color333(7, 0, 0));
+  matrix.drawLine(18, 0, 18, 31, matrix.Color333(7, 0, 0));
+  matrix.drawLine(17, 0, 17, 31, matrix.Color333(7, 0, 0));
+  matrix.drawLine(16, 0, 16, 31, matrix.Color333(7, 0, 0));
+  matrix.drawLine(15, 0, 15, 31, matrix.Color333(7, 0, 0));
+  matrix.drawLine(14, 0, 14, 31, matrix.Color333(7, 0, 0));
+  matrix.drawLine(13, 0, 13, 31, matrix.Color333(7, 0, 0));
+  matrix.drawLine(12, 0, 12, 31, matrix.Color333(7, 0, 0));
+  matrix.drawLine(11, 0, 11, 31, matrix.Color333(7, 0, 0));
+  matrix.drawLine(10, 0, 10, 31, matrix.Color333(7, 0, 0));
+  matrix.drawLine(9, 0, 9, 31, matrix.Color333(7, 0, 0));
+  matrix.drawLine(8, 0, 8, 31, matrix.Color333(7, 0, 0));
+  matrix.drawLine(7, 0, 7, 31, matrix.Color333(7, 0, 0));
+  matrix.drawLine(6, 0, 6, 31, matrix.Color333(7, 0, 0));
+  matrix.drawLine(5, 0, 5, 31, matrix.Color333(7, 0, 0));
+  matrix.drawLine(4, 0, 4, 31, matrix.Color333(7, 0, 0));
+  matrix.drawLine(3, 0, 3, 31, matrix.Color333(7, 0, 0));
+  matrix.drawLine(2, 0, 2, 31, matrix.Color333(7, 0, 0));
+  matrix.drawLine(1, 0, 1, 31, matrix.Color333(7, 0, 0));
+  matrix.drawLine(0, 0, 0, 31, matrix.Color333(7, 0, 0));
+  */
+  
   //Left lower corner Box
    matrix.drawLine(31, 13, 18, 13, matrix.Color333(7, 0, 0));
    matrix.drawLine(18, 13, 18, 1, matrix.Color333(7, 0, 0));
