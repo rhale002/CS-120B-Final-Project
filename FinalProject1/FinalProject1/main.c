@@ -7,6 +7,8 @@
 
 #include <avr/io.h>
 #include <stdlib.h>
+#include <time.h>
+#include <stdlib.h>
 #include "io.h"
 #include "joystick.h"
 #include "scheduler.h"
@@ -23,7 +25,17 @@
 //Task Scheduler Variables
 unsigned long numTasks = 6;
 
+//Used to reset Game
 extern unsigned char resetGame;
+
+//Tracks whether to reset to win demo
+extern unsigned char resetGameWinDemo;
+
+extern unsigned char group;
+extern unsigned char bottomLeftCorner;
+extern unsigned char bottomRightCorner;
+extern unsigned char topRightCorner;
+extern unsigned char topLeftCorner;
 
 void resetTasks(task *tasks)
 {
@@ -67,10 +79,25 @@ void resetTasks(task *tasks)
 	++taskIndex;
 }
 
+void setBoardToDrawRandom()
+{	
+	group = group == 1 ? 2 : 1;
+
+	bottomLeftCorner = group == 0 ? rand() % 4 : (rand() % 4) + 4;
+	bottomRightCorner = group == 0 ? rand() % 4 : (rand() % 4) + 4;
+	topLeftCorner = group == 0 ? rand() % 4 : (rand() % 4) + 4;
+	topRightCorner = group == 0 ? rand() % 4 : (rand() % 4) + 4;
+}
+
+void setBoardToDrawWinDemo()
+{
+	group = 0;
+}
+
 int main(void)
 {
 	DDRA = 0x00; PORTC = 0xFF;	//Setup Port A for Joystick input
-	DDRD = 0x02; PORTD = 0x41;	//Setup Port D for USART
+	DDRD = 0x02; PORTD = 0x61;	//Setup Port D for USART and buttons
 	DDRC = 0xFF; PORTC = 0x00; // LCD data lines
 	DDRB = 0xFF; PORTB = 0x00; // LCD control lines
 	
@@ -90,12 +117,26 @@ int main(void)
 	//Initialize task scheduler
 	task tasks[numTasks];
 
+	//Seed RNG
+	srand(time(NULL)); 
+
+	//Set tasks and choose random board to draw
 	resetTasks(tasks);
+	setBoardToDrawWinDemo();
 	
     while (1) 
     {
 		if(resetGame == 0x01)
+		{
 			resetTasks(tasks);
+			setBoardToDrawRandom();
+		}
+		else if(resetGameWinDemo == 0x01)
+		{
+			resetTasks(tasks);
+			setBoardToDrawWinDemo();
+		}
+
 		//Handle tasks
 		for(unsigned long i = 0; i < numTasks; i++)
 		{

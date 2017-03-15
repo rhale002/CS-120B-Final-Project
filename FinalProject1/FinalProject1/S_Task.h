@@ -10,6 +10,7 @@ extern unsigned short score;
 
 //Variable to keep track if we should end the game for a loss
 extern unsigned char sendEndGameBad;
+extern unsigned char sendEndGameGood;
 
 //Outputs score to LCD screen
 void outputScore()

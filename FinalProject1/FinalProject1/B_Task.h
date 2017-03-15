@@ -8,6 +8,13 @@ unsigned long B_Period = 1;
 //Create extern variable for board array
 extern unsigned char board[32][32];
 
+//Random board variables
+extern unsigned char group;
+extern unsigned char bottomLeftCorner;
+extern unsigned char bottomRightCorner;
+extern unsigned char topRightCorner;
+extern unsigned char topLeftCorner;
+
 //Track how many spaces need to be filled
 extern unsigned short requiredSpaces;
 
@@ -58,6 +65,7 @@ void clearBoard()
 	}
 }
 
+//Test win board
 void fillboardWinTest()
 {
 	drawLine(31, 5, 31, 31);
@@ -94,6 +102,7 @@ void fillboardWinTest()
 	drawLine(0, 0, 0, 31);
 }
 
+//Test Board
 void fillBoardBasic()
 {
 	//Left lower corner Box
@@ -180,6 +189,154 @@ void fillBoardBasic()
 	drawLine(26, 30, 30, 30);
 }
 
+//Fill bottom left corner square with random grid
+void bottomLeftCornerRandFill()
+{
+	if(bottomLeftCorner == 0)
+	{
+
+	}
+	else if(bottomLeftCorner == 1)
+	{
+
+	}
+	else if(bottomLeftCorner == 2)
+	{
+
+	}
+	else if(bottomLeftCorner == 3)
+	{
+
+	}
+	else if(bottomLeftCorner == 4)
+	{
+
+	}
+	else if(bottomLeftCorner == 5)
+	{
+
+	}
+	else if(bottomLeftCorner == 6)
+	{
+
+	}
+	else if(bottomLeftCorner == 7)
+	{
+
+	}
+}
+
+//Fill bottom right corner with random grid
+void bottomRightCornerRandFill()
+{
+	if(bottomRightCorner == 0)
+	{
+
+	}
+	else if(bottomRightCorner == 1)
+	{
+
+	}
+	else if(bottomRightCorner == 2)
+	{
+
+	}
+	else if(bottomRightCorner == 3)
+	{
+
+	}
+	else if(bottomRightCorner == 4)
+	{
+
+	}
+	else if(bottomRightCorner == 5)
+	{
+
+	}
+	else if(bottomRightCorner == 6)
+	{
+
+	}
+	else if(bottomRightCorner == 7)
+	{
+
+	}
+}
+
+//Fill top left corner with random grid
+void topLeftCornerRandFill()
+{
+	if(topLeftCorner == 0)
+	{
+
+	}
+	else if(topLeftCorner == 1)
+	{
+
+	}
+	else if(topLeftCorner == 2)
+	{
+
+	}
+	else if(topLeftCorner == 3)
+	{
+
+	}
+	else if(topLeftCorner == 4)
+	{
+
+	}
+	else if(topLeftCorner == 5)
+	{
+
+	}
+	else if(topLeftCorner == 6)
+	{
+
+	}
+	else if(topLeftCorner == 7)
+	{
+
+	}
+}
+
+//Fill top right corner with random grid
+void topRightCornerRandFill()
+{
+	if(topRightCorner == 0)
+	{
+
+	}
+	else if(topRightCorner == 1)
+	{
+
+	}
+	else if(topRightCorner == 2)
+	{
+
+	}
+	else if(topRightCorner == 3)
+	{
+
+	}
+	else if(topRightCorner == 4)
+	{
+
+	}
+	else if(topRightCorner == 5)
+	{
+
+	}
+	else if(topRightCorner == 6)
+	{
+
+	}
+	else if(topRightCorner == 7)
+	{
+
+	}
+}
+
 //Initialize B_Task Tick Function
 int B_Tick(int currentState)
 {
@@ -215,12 +372,22 @@ int B_Tick(int currentState)
 		case B_Init:
 		{
 			requiredSpaces = 1024;
+			requiredSpaces--;
+
 			sendEndGameBad = 0x00;
 			sendEndGameGood = 0x00;
+
 			clearBoard();
-			fillBoardBasic();
-			//fillboardWinTest();
-			requiredSpaces--;
+			if(group == 0)
+				fillboardWinTest();
+			else
+			{
+				bottomLeftCornerRandFill();
+				bottomRightCornerRandFill();
+				topLeftCornerRandFill();
+				topRightCornerRandFill();
+			}
+			//fillBoardBasic();
 		}
 		break;
 

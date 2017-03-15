@@ -23,8 +23,14 @@ unsigned char sendEndGameGood;
 //Variable to keep track of sending reset signal to arduino
 unsigned char sendResetGame;
 
+//Variable to track if sending reset to win demo
+unsigned char sendResetWinDemo;
+
 //Tracks whether to reset all states
 unsigned char resetGame;
+
+//Tracks whether to reset to win demo
+unsigned char resetGameWinDemo;
 
 //Keeps track of output of joystick (which direction is being input)
 //NO INPUT: J_Output == 0x00
@@ -42,5 +48,12 @@ unsigned char incrementScore;
 
 //Track how many spaces need to be filled
 unsigned short requiredSpaces;
+
+//Maps Info
+unsigned char group;
+unsigned char bottomLeftCorner;
+unsigned char bottomRightCorner;
+unsigned char topRightCorner;
+unsigned char topLeftCorner;
 
 #endif
