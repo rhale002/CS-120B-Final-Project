@@ -849,7 +849,66 @@ void topRightCornerRandFill()
   }
   else if(topRightCorner == 2)
   {
+     //Top Right box
+     matrix.drawLine(1, 30, 8, 30, matrix.Color333(7, 0, 0));
+     matrix.drawLine(6, 29, 8, 29, matrix.Color333(7, 0, 0));
+     matrix.drawLine(6, 28, 8, 28, matrix.Color333(7, 0, 0));
 
+     //Top right line
+     matrix.drawLine(0, 28, 4, 28, matrix.Color333(7, 0, 0));
+
+     //Right mid box
+     matrix.drawLine(1, 26, 3, 26, matrix.Color333(7, 0, 0));
+     matrix.drawLine(1, 25, 3, 25, matrix.Color333(7, 0, 0));
+     matrix.drawLine(1, 24, 3, 24, matrix.Color333(7, 0, 0));
+
+     // right mid low block
+     matrix.drawLine(0, 22, 2, 22, matrix.Color333(7, 0, 0));
+     matrix.drawLine(0, 21, 2, 21, matrix.Color333(7, 0, 0));
+     matrix.drawLine(0, 20, 0, 17, matrix.Color333(7, 0, 0));
+
+     //block to the left
+     matrix.drawLine(2, 19, 3, 19, matrix.Color333(7, 0, 0));
+     matrix.drawLine(2, 18, 3, 18, matrix.Color333(7, 0, 0));
+
+     //block to the left
+     matrix.drawLine(5, 17, 5, 20, matrix.Color333(7, 0, 0));
+     matrix.drawLine(6, 17, 6, 20, matrix.Color333(7, 0, 0));
+
+     //Middle bottom S
+     matrix.drawLine(6, 22, 8, 22, matrix.Color333(7, 0, 0));
+     matrix.drawLine(8, 21, 8, 16, matrix.Color333(7, 0, 0));
+     matrix.drawLine(9, 16, 11, 16, matrix.Color333(7, 0, 0));
+
+     //Bottom left block
+     matrix.drawLine(14, 16, 14, 18, matrix.Color333(7, 0, 0));
+     matrix.drawLine(15, 16, 15, 18, matrix.Color333(7, 0, 0));
+
+     //Bottom left duck
+     matrix.drawLine(13, 20, 14, 20, matrix.Color333(7, 0, 0));
+     matrix.drawLine(12, 18, 12, 20, matrix.Color333(7, 0, 0));
+     matrix.drawLine(11, 18, 11, 20, matrix.Color333(7, 0, 0));
+     matrix.drawLine(10, 18, 10, 23, matrix.Color333(7, 0, 0));
+
+     //box above S
+     matrix.drawLine(7, 24, 7, 26, matrix.Color333(7, 0, 0));
+     matrix.drawLine(6, 24, 6, 26, matrix.Color333(7, 0, 0));
+     matrix.drawLine(5, 24, 5, 26, matrix.Color333(7, 0, 0));
+
+     //S above duck
+     matrix.drawLine(15, 22, 12, 22, matrix.Color333(7, 0, 0));
+     matrix.drawLine(12, 23, 12, 26, matrix.Color333(7, 0, 0));
+     matrix.drawLine(11, 26, 9, 26, matrix.Color333(7, 0, 0));
+     matrix.drawLine(11, 25, 9, 25, matrix.Color333(7, 0, 0));
+
+     //Above duck S
+     matrix.drawLine(14, 24, 14, 28, matrix.Color333(7, 0, 0));
+     matrix.drawLine(13, 28, 10, 28, matrix.Color333(7, 0, 0));
+     matrix.drawLine(10, 29, 10, 31, matrix.Color333(7, 0, 0));
+     matrix.drawLine(11, 29, 11, 31, matrix.Color333(7, 0, 0));
+
+     //Top Left line
+     matrix.drawLine(13, 30, 15, 30, matrix.Color333(7, 0, 0));
   }
   else if(topRightCorner == 3)
   {
@@ -935,7 +994,7 @@ void setup()
   group = 1;
   bottomLeftCorner = 0x00;
   bottomRightCorner = 0x00;
-  topRightCorner = 0x01;
+  topRightCorner = 0x02;
   topLeftCorner = 0x00;
   
   reset();
