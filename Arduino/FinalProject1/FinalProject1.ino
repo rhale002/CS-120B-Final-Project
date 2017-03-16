@@ -724,7 +724,69 @@ void topRightCornerRandFill()
 {
   if(topRightCorner == 0)
   {
+     //Top right box
+     matrix.drawLine(0, 31, 0, 25, matrix.Color333(7, 0, 0));
+     matrix.drawLine(1, 31, 1, 30, matrix.Color333(7, 0, 0));
+     matrix.drawLine(2, 31, 2, 30, matrix.Color333(7, 0, 0));
+     matrix.drawLine(3, 31, 3, 30, matrix.Color333(7, 0, 0));
+     matrix.drawLine(1, 26, 1, 25, matrix.Color333(7, 0, 0));
+     matrix.drawLine(2, 26, 2, 25, matrix.Color333(7, 0, 0));
 
+     //Weird middle right box
+     matrix.drawLine(2, 28, 4, 28, matrix.Color333(7, 0, 0));
+     matrix.drawLine(4, 27, 4, 24, matrix.Color333(7, 0, 0));
+     matrix.drawLine(5, 23, 1, 23, matrix.Color333(7, 0, 0));
+     matrix.drawLine(5, 22, 1, 22, matrix.Color333(7, 0, 0));
+     matrix.drawLine(5, 21, 1, 21, matrix.Color333(7, 0, 0));
+
+     //line to the left
+     matrix.drawLine(6, 29, 6, 25, matrix.Color333(7, 0, 0));
+
+     //Bottom right sqaure
+     matrix.drawLine(0, 19, 1, 19, matrix.Color333(7, 0, 0));
+     matrix.drawLine(0, 18, 1, 18, matrix.Color333(7, 0, 0));
+
+     //Bottom left little middle box
+     matrix.drawLine(4, 19, 4, 17, matrix.Color333(7, 0, 0));
+     matrix.drawLine(5, 19, 5, 17, matrix.Color333(7, 0, 0));
+
+     //bottom middle line
+     matrix.drawLine(7, 18, 7, 16, matrix.Color333(7, 0, 0));
+
+     //bottom left middle box
+     matrix.drawLine(10, 18, 10, 19, matrix.Color333(7, 0, 0));
+     matrix.drawLine(11, 18, 11, 19, matrix.Color333(7, 0, 0));
+
+     //bottom left L
+     matrix.drawLine(13, 18, 13, 17, matrix.Color333(7, 0, 0));
+     matrix.drawLine(14, 17, 14, 17, matrix.Color333(7, 0, 0));
+
+     //bottom left up mid box
+     matrix.drawLine(15, 19, 15, 21, matrix.Color333(7, 0, 0));
+     matrix.drawLine(14, 20, 14, 21, matrix.Color333(7, 0, 0));
+
+     //mid left box
+     matrix.drawLine(12, 21, 11, 21, matrix.Color333(7, 0, 0));
+     matrix.drawLine(12, 22, 11, 22, matrix.Color333(7, 0, 0));
+     matrix.drawLine(14, 23, 11, 23, matrix.Color333(7, 0, 0));
+
+     //Mid left spec
+     matrix.drawLine(13, 25, 12, 25, matrix.Color333(7, 0, 0));
+
+     //middle long box
+     matrix.drawLine(9, 22, 9, 30, matrix.Color333(7, 0, 0));
+     matrix.drawLine(8, 22, 8, 30, matrix.Color333(7, 0, 0));
+
+     //bottom spec
+     matrix.drawLine(8, 20, 7, 20, matrix.Color333(7, 0, 0));
+
+     // top left Brace
+     matrix.drawLine(14, 27, 12, 27, matrix.Color333(7, 0, 0));
+     matrix.drawLine(11, 27, 11, 31, matrix.Color333(7, 0, 0));
+     matrix.drawLine(14, 31, 12, 31, matrix.Color333(7, 0, 0));
+
+     //Top left line
+     matrix.drawLine(15, 29, 13, 29, matrix.Color333(7, 0, 0));
   }
   else if(topRightCorner == 1)
   {
@@ -817,7 +879,7 @@ void setup()
 //  group = 0;
   group = 1;
   bottomLeftCorner = 0x00;
-  bottomRightCorner = 0x03;
+  bottomRightCorner = 0x00;
   topRightCorner = 0x00;
   topLeftCorner = 0x00;
   
