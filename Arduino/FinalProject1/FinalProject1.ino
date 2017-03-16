@@ -1213,10 +1213,10 @@ void drawWinDemo()
 
 void drawRandBoard()
 {
-//  bottomLeftCornerRandFill();
-//  bottomRightCornerRandFill();
+  bottomLeftCornerRandFill();
+  bottomRightCornerRandFill();
   topLeftCornerRandFill();
-//  topRightCornerRandFill();
+  topRightCornerRandFill();
 }
 
 void reset()
@@ -1247,13 +1247,12 @@ void setup()
 
   Serial.begin(9600);
 
-  //FIXME TESTING!!!!!
-//  group = 0;
-  group = 1;
-  bottomLeftCorner = 0x00;
-  bottomRightCorner = 0x00;
-  topRightCorner = 0x00;
-  topLeftCorner = 0x03;
+  group = 0;
+//  group = 1;
+//  bottomLeftCorner = 0x00;
+//  bottomRightCorner = 0x00;
+//  topRightCorner = 0x00;
+//  topLeftCorner = 0x03;
   
   reset();
 }
