@@ -31,7 +31,7 @@ unsigned char recieveResetGame = 0x00;
 
 unsigned char recieveResetGameToWinDemo = 0x00;
 
-unsigned char group = 0x01;
+unsigned char group = 0x00;
 unsigned char bottomLeftCorner = 0x00;
 unsigned char bottomRightCorner = 0x00;
 unsigned char topRightCorner = 0x00;
@@ -294,6 +294,8 @@ void setup()
   matrix.begin();
 
   Serial.begin(9600);
+
+  group = 0;
   
   reset();
 }

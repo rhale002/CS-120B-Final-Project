@@ -49,13 +49,6 @@ unsigned char incrementScore;
 //Track how many spaces need to be filled
 unsigned short requiredSpaces;
 
-//Maps Info previous
-unsigned char nGroup;
-unsigned char nBottomLeftCorner;
-unsigned char nBottomRightCorner;
-unsigned char nTopRightCorner;
-unsigned char nTopLeftCorner;
-
 //Maps Info current
 unsigned char group;
 unsigned char bottomLeftCorner;
@@ -65,24 +58,16 @@ unsigned char topLeftCorner;
 
 void setBoardToDrawRandom()
 {
-	group = nGroup;
-	bottomLeftCorner = nBottomLeftCorner;
-	bottomRightCorner = nBottomRightCorner;
-	topRightCorner = nTopRightCorner;
-	topLeftCorner = nTopLeftCorner;
-	
-	nGroup = group == 1 ? 2 : 1;
-	nBottomLeftCorner = group == 1 ? rand() % 4 : (rand() % 4) + 4;
-	nBottomRightCorner = group == 1 ? rand() % 4 : (rand() % 4) + 4;
-	nTopLeftCorner = group == 1 ? rand() % 4 : (rand() % 4) + 4;
-	nTopRightCorner = group == 1 ? rand() % 4 : (rand() % 4) + 4;
+	group = group == 1 ? 2 : 1;
+	bottomLeftCorner = group == 1 ? rand() % 4 : (rand() % 4) + 4;
+	bottomRightCorner = group == 1 ? rand() % 4 : (rand() % 4) + 4;
+	topRightCorner = group == 1 ? rand() % 4 : (rand() % 4) + 4;
+	topLeftCorner = group == 1 ? rand() % 4 : (rand() % 4) + 4;
 }
 
 void setBoardToDrawWinDemo()
 {
-	group = nGroup;
-	
-	nGroup = 0;
+	group = 0;
 }
 
 #endif

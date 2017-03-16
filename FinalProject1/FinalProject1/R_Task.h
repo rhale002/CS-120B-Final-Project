@@ -44,6 +44,7 @@ int R_Tick(int currentState)
 			if((~PIND & 0x40) != 0x40)
 			{
 				sendResetGame = 0x01;
+				setBoardToDrawRandom();
 				currentState = R_Base;
 			}
 		}
@@ -55,6 +56,7 @@ int R_Tick(int currentState)
 			if((~PIND & 0x20) != 0x20)
 			{
 				sendResetWinDemo = 0x01;
+				setBoardToDrawWinDemo();
 				currentState = R_Base;
 			}
 		}

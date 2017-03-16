@@ -9,11 +9,11 @@ unsigned long U_Period = 1;
 extern Player player;
 
 //Maps Info previous
-extern unsigned char nGroup;
-extern unsigned char nBottomLeftCorner;
-extern unsigned char nBottomRightCorner;
-extern unsigned char nTopRightCorner;
-extern unsigned char nTopLeftCorner;
+extern unsigned char group;
+extern unsigned char bottomLeftCorner;
+extern unsigned char bottomRightCorner;
+extern unsigned char topRightCorner;
+extern unsigned char topLeftCorner;
 
 //Variable to keep track if we should end the game for a loss
 extern unsigned char sendEndGameBad;
@@ -36,6 +36,7 @@ extern unsigned char sendResetWinDemo;
 //Initialize U_Task Tick Function
 int U_Tick(int currentState)
 {
+	static unsigned char resetCounter;
 	static unsigned char USART_Index;
 	
 	switch(currentState)
@@ -70,6 +71,7 @@ int U_Tick(int currentState)
 		case U_Init:
 		{
 			USART_Index = 0;
+			resetCounter = 0;
 			USART_Flush(0);
 		}
 		break;
@@ -78,27 +80,37 @@ int U_Tick(int currentState)
 		{
 			if(USART_Index == 0 && USART_IsSendReady(0))			
 			{
-				USART_Send(nGroup, 0);
+				USART_Send(group, 0);
+				if(sendResetGame == 0x01 || sendResetWinDemo == 0x01)
+					resetCounter++;
 				++USART_Index;
 			}
 			else if(USART_Index == 1 && USART_IsSendReady(0))		
 			{
-				USART_Send(nBottomLeftCorner, 0);
+				USART_Send(bottomLeftCorner, 0);
+				if(sendResetGame == 0x01 || sendResetWinDemo == 0x01)
+					resetCounter++;
 				++USART_Index;
 			}
 			else if(USART_Index == 2 && USART_IsSendReady(0))		
 			{
-				USART_Send(nBottomRightCorner, 0);
+				USART_Send(bottomRightCorner, 0);
+				if(sendResetGame == 0x01 || sendResetWinDemo == 0x01)
+					resetCounter++;
 				++USART_Index;
 			}
 			else if(USART_Index == 3 && USART_IsSendReady(0))		
 			{
-				USART_Send(nTopLeftCorner, 0);
+				USART_Send(topLeftCorner, 0);
+				if(sendResetGame == 0x01 || sendResetWinDemo == 0x01)
+					resetCounter++;
 				++USART_Index;
 			}
 			else if(USART_Index == 4 && USART_IsSendReady(0))
 			{
-				USART_Send(nTopRightCorner, 0);
+				USART_Send(topRightCorner, 0);
+				if(sendResetGame == 0x01 || sendResetWinDemo == 0x01)
+					resetCounter++;
 				++USART_Index;
 			}
 			else if(USART_Index == 5 && USART_IsSendReady(0))			//Send byte over USART for player x-position
@@ -123,16 +135,16 @@ int U_Tick(int currentState)
 			}
 			else if(USART_Index == 9 && USART_IsSendReady(0))		//If game should be reset
 			{
-				USART_Send(sendResetGame, 0);
-				if(sendResetGame == 0x01)
+				if(sendResetGame == 0x01 && resetCounter >= 5)
 					resetGame = 0x01;
+				USART_Send(resetGame, 0);
 				++USART_Index;
 			}
 			else if(USART_Index == 10 && USART_IsSendReady(0))		//If game should be reset
 			{
-				USART_Send(sendResetWinDemo, 0);
-				if(sendResetWinDemo == 0x01)
+				if(sendResetWinDemo == 0x01 && resetCounter >= 5)
 					resetGameWinDemo = 0x01;
+				USART_Send(resetGameWinDemo, 0);
 				USART_Index = 0;
 			}
 		}
