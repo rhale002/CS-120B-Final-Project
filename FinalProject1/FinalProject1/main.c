@@ -79,6 +79,21 @@ void resetTasks(task *tasks)
 	++taskIndex;
 }
 
+void setBoardToDrawRandom()
+{	
+	group = group == 1 ? 2 : 1;
+
+	bottomLeftCorner = group == 0 ? rand() % 4 : (rand() % 4) + 4;
+	bottomRightCorner = group == 0 ? rand() % 4 : (rand() % 4) + 4;
+	topLeftCorner = group == 0 ? rand() % 4 : (rand() % 4) + 4;
+	topRightCorner = group == 0 ? rand() % 4 : (rand() % 4) + 4;
+}
+
+void setBoardToDrawWinDemo()
+{
+	group = 0;
+}
+
 int main(void)
 {
 	DDRA = 0x00; PORTC = 0xFF;	//Setup Port A for Joystick input
