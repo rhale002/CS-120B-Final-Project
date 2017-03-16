@@ -553,15 +553,148 @@ void bottomRightCornerRandFill()
     matrix.drawLine(14, 8, 13, 8, matrix.Color333(7, 0, 0));
     matrix.drawLine(14, 9, 13, 9, matrix.Color333(7, 0, 0));
 
-    
+    //box above the left middle box
+    matrix.drawLine(11, 9, 9, 9, matrix.Color333(7, 0, 0));
+    matrix.drawLine(11, 10, 9, 10, matrix.Color333(7, 0, 0));
+
+    //Big ass shit above
+    matrix.drawLine(7, 11, 7, 8, matrix.Color333(7, 0, 0));
+    matrix.drawLine(14, 12, 7, 12, matrix.Color333(7, 0, 0));
+    matrix.drawLine(14, 13, 7, 13, matrix.Color333(7, 0, 0));
+    matrix.drawLine(14, 14, 7, 14, matrix.Color333(7, 0, 0));
+
+    //top right line
+    matrix.drawLine(1, 13, 5, 13, matrix.Color333(7, 0, 0));
   }
   else if(bottomRightCorner == 2)
   {
+     //bottom right L
+     matrix.drawLine(0, 0, 0, 5, matrix.Color333(7, 0, 0));
+     matrix.drawLine(2, 5, 1, 5, matrix.Color333(7, 0, 0));
 
+     //bottom right rect
+     matrix.drawLine(2, 1, 3, 1, matrix.Color333(7, 0, 0));
+     matrix.drawLine(2, 2, 3, 2, matrix.Color333(7, 0, 0));
+     matrix.drawLine(2, 3, 3, 3, matrix.Color333(7, 0, 0));
+
+     //Fat Butt L
+     matrix.drawLine(5, 0, 5, 6, matrix.Color333(7, 0, 0));
+     matrix.drawLine(6, 5, 8, 5, matrix.Color333(7, 0, 0));
+     matrix.drawLine(6, 6, 8, 6, matrix.Color333(7, 0, 0));
+
+     //Under dat booty
+     matrix.drawLine(7, 1, 7, 3, matrix.Color333(7, 0, 0));
+     matrix.drawLine(8, 2, 8, 3, matrix.Color333(7, 0, 0));
+     matrix.drawLine(9, 2, 9, 3, matrix.Color333(7, 0, 0));
+
+     //Left of da booty
+     matrix.drawLine(10, 4, 10, 5, matrix.Color333(7, 0, 0));
+     matrix.drawLine(11, 4, 11, 5, matrix.Color333(7, 0, 0));
+     matrix.drawLine(12, 4, 12, 5, matrix.Color333(7, 0, 0));
+
+     //Bottom left corner box
+     matrix.drawLine(9, 0, 13, 0, matrix.Color333(7, 0, 0));
+     matrix.drawLine(11, 1, 13, 1, matrix.Color333(7, 0, 0));
+     matrix.drawLine(11, 2, 13, 2, matrix.Color333(7, 0, 0));
+
+     //Bottom left line
+     matrix.drawLine(15, 1, 15, 3, matrix.Color333(7, 0, 0));
+
+     //Bottom Left L
+     matrix.drawLine(14, 5, 14, 7, matrix.Color333(7, 0, 0));
+     matrix.drawLine(13, 7, 11, 7, matrix.Color333(7, 0, 0));
+
+     //Above the L
+     matrix.drawLine(15, 9, 12, 9, matrix.Color333(7, 0, 0));
+
+     //Big top left corner box
+     matrix.drawLine(14, 11, 9, 11, matrix.Color333(7, 0, 0));
+     matrix.drawLine(14, 12, 9, 12, matrix.Color333(7, 0, 0));
+     matrix.drawLine(14, 13, 9, 13, matrix.Color333(7, 0, 0));
+     matrix.drawLine(10, 14, 9, 14, matrix.Color333(7, 0, 0));
+
+     //top right box
+     matrix.drawLine(7, 15, 1, 15, matrix.Color333(7, 0, 0));
+     matrix.drawLine(7, 14, 1, 14, matrix.Color333(7, 0, 0));
+     matrix.drawLine(7, 13, 6, 13, matrix.Color333(7, 0, 0));
+
+     //Top right little lower box
+     matrix.drawLine(0, 12, 4, 12, matrix.Color333(7, 0, 0));
+     matrix.drawLine(0, 11, 6, 11, matrix.Color333(7, 0, 0));
+
+     //middle long box
+     matrix.drawLine(1, 9, 9, 9, matrix.Color333(7, 0, 0));
+     matrix.drawLine(1, 8, 9, 8, matrix.Color333(7, 0, 0));
+     matrix.drawLine(1, 7, 3, 7, matrix.Color333(7, 0, 0));
+
+     //top right line
+     matrix.drawLine(15, 15, 12, 15, matrix.Color333(7, 0, 0));
   }
   else if(bottomRightCorner == 3)
   {
+     //Bottom right box
+     matrix.drawLine(1, 1, 4, 1, matrix.Color333(7, 0, 0));
+     matrix.drawLine(1, 2, 3, 2, matrix.Color333(7, 0, 0));
+     matrix.drawLine(1, 3, 3, 3, matrix.Color333(7, 0, 0));
 
+     //bottom middle box
+     matrix.drawLine(7, 1, 7, 3, matrix.Color333(7, 0, 0));
+     matrix.drawLine(8, 1, 8, 3, matrix.Color333(7, 0, 0));
+
+     //above L
+     matrix.drawLine(5, 3, 5, 5, matrix.Color333(7, 0, 0));
+     matrix.drawLine(6, 5, 7, 5, matrix.Color333(7, 0, 0));
+
+     //Bottom left block
+     matrix.drawLine(10, 4, 14, 4, matrix.Color333(7, 0, 0));
+     matrix.drawLine(10, 3, 14, 3, matrix.Color333(7, 0, 0));
+     matrix.drawLine(10, 2, 11, 2, matrix.Color333(7, 0, 0));
+
+     //Bottom left line
+     matrix.drawLine(13, 1, 15, 1, matrix.Color333(7, 0, 0));
+
+     //Left middle weird
+     matrix.drawLine(15, 6, 9, 6, matrix.Color333(7, 0, 0));
+     matrix.drawLine(15, 7, 14, 7, matrix.Color333(7, 0, 0));
+     matrix.drawLine(15, 8, 14, 8, matrix.Color333(7, 0, 0));
+     matrix.drawLine(15, 9, 14, 9, matrix.Color333(7, 0, 0));
+     matrix.drawLine(15, 10, 11, 10, matrix.Color333(7, 0, 0));
+
+     //Crevice L
+     matrix.drawLine(12, 8, 9, 8, matrix.Color333(7, 0, 0));
+     matrix.drawLine(9, 9, 9, 11, matrix.Color333(7, 0, 0));
+
+     //Top left box
+     matrix.drawLine(12, 12, 14, 12, matrix.Color333(7, 0, 0));
+     matrix.drawLine(12, 13, 14, 13, matrix.Color333(7, 0, 0));
+     matrix.drawLine(12, 14, 14, 14, matrix.Color333(7, 0, 0));
+
+     //Top middle box
+     matrix.drawLine(10, 15, 8, 15, matrix.Color333(7, 0, 0));
+     matrix.drawLine(10, 14, 8, 14, matrix.Color333(7, 0, 0));
+     matrix.drawLine(10, 13, 8, 13, matrix.Color333(7, 0, 0));
+
+     //Top middle L
+     matrix.drawLine(6, 14, 6, 12, matrix.Color333(7, 0, 0));
+     matrix.drawLine(5, 12, 3, 12, matrix.Color333(7, 0, 0));
+
+     //Top right box
+     matrix.drawLine(4, 15, 1, 15, matrix.Color333(7, 0, 0));
+     matrix.drawLine(4, 14, 2, 14, matrix.Color333(7, 0, 0));
+
+     //top right spec
+     matrix.drawLine(0, 13, 0, 12, matrix.Color333(7, 0, 0));
+
+     //middle box
+     matrix.drawLine(1, 10, 7, 10, matrix.Color333(7, 0, 0));
+     matrix.drawLine(4, 9, 7, 9, matrix.Color333(7, 0, 0));
+     matrix.drawLine(4, 8, 7, 8, matrix.Color333(7, 0, 0));
+     matrix.drawLine(4, 7, 7, 7, matrix.Color333(7, 0, 0));
+
+     //Middle Right box
+     matrix.drawLine(0, 5, 0, 8, matrix.Color333(7, 0, 0));
+     matrix.drawLine(1, 5, 1, 8, matrix.Color333(7, 0, 0));
+     matrix.drawLine(2, 5, 2, 8, matrix.Color333(7, 0, 0));
   }
 }
 
@@ -646,8 +779,8 @@ void drawWinDemo()
 
 void drawRandBoard()
 {
-  //bottomLeftCornerRandFill();
-  bottomRightCornerRandFill();
+//  bottomLeftCornerRandFill();
+//  bottomRightCornerRandFill();
   topLeftCornerRandFill();
   topRightCornerRandFill();
 }
@@ -681,10 +814,10 @@ void setup()
   Serial.begin(9600);
 
   //FIXME TESTING!!!!!
-  //group = 0;
+//  group = 0;
   group = 1;
   bottomLeftCorner = 0x00;
-  bottomRightCorner = 0x01;
+  bottomRightCorner = 0x03;
   topRightCorner = 0x00;
   topLeftCorner = 0x00;
   
