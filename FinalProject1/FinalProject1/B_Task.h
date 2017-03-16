@@ -208,22 +208,6 @@ void bottomLeftCornerRandFill()
 	{
 
 	}
-	else if(bottomLeftCorner == 4)
-	{
-
-	}
-	else if(bottomLeftCorner == 5)
-	{
-
-	}
-	else if(bottomLeftCorner == 6)
-	{
-
-	}
-	else if(bottomLeftCorner == 7)
-	{
-
-	}
 }
 
 //Fill bottom right corner with random grid
@@ -242,22 +226,6 @@ void bottomRightCornerRandFill()
 
 	}
 	else if(bottomRightCorner == 3)
-	{
-
-	}
-	else if(bottomRightCorner == 4)
-	{
-
-	}
-	else if(bottomRightCorner == 5)
-	{
-
-	}
-	else if(bottomRightCorner == 6)
-	{
-
-	}
-	else if(bottomRightCorner == 7)
 	{
 
 	}
@@ -282,22 +250,6 @@ void topLeftCornerRandFill()
 	{
 
 	}
-	else if(topLeftCorner == 4)
-	{
-
-	}
-	else if(topLeftCorner == 5)
-	{
-
-	}
-	else if(topLeftCorner == 6)
-	{
-
-	}
-	else if(topLeftCorner == 7)
-	{
-
-	}
 }
 
 //Fill top right corner with random grid
@@ -316,22 +268,6 @@ void topRightCornerRandFill()
 
 	}
 	else if(topRightCorner == 3)
-	{
-
-	}
-	else if(topRightCorner == 4)
-	{
-
-	}
-	else if(topRightCorner == 5)
-	{
-
-	}
-	else if(topRightCorner == 6)
-	{
-
-	}
-	else if(topRightCorner == 7)
 	{
 
 	}
